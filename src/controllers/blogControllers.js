@@ -151,6 +151,30 @@ const updateBlog = async (req,res)=>{
   }
 }
 
+
+
+const searchBlogByTitle = async (req, res) => {
+  try {
+    const { title } = req.query;
+
+    const blogs = await blog.find({
+      title: { $regex: title, $options: "i" },
+    });
+
+    res.status(200).json({
+      success: true,
+      blogs,
+    });
+  } catch (error) {
+    console.log(error);
+
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
 module.exports = {
-  createBlog,getBlogs,getSingleBlog,deleteBlog,updateBlog
+  createBlog,getBlogs,getSingleBlog,deleteBlog,updateBlog,searchBlogByTitle
 }

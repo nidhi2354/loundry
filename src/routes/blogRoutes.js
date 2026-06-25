@@ -12,7 +12,7 @@ const roleMiddleware = require("../middlewares/roleMiddleware")
 
 const upload = require("../middlewares/multer")
 
-const {createBlog, getBlogs, getSingleBlog, deleteBlog, updateBlog} = require("../controllers/blogControllers")
+const {createBlog, getBlogs, getSingleBlog, deleteBlog, updateBlog,searchBlogByTitle} = require("../controllers/blogControllers")
 
 
 
@@ -24,6 +24,13 @@ router.post("/create",
 
 
 router.get("/get",getBlogs);
+
+
+
+
+router.get("/search", searchBlogByTitle);
+
+
 
 
 router.get("/:id",getSingleBlog);
@@ -38,6 +45,12 @@ router.put("/update/:id",
   roleMiddleware,
    upload.single("image"),
   updateBlog)
+
+
+
+
+
+
 
 module.exports = router;
 

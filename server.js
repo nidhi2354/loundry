@@ -1,8 +1,10 @@
 const dotenv = require("dotenv");
-console.log(process.env.JWT_SECRET);
+
 
 dotenv.config();
 
+
+console.log(process.env.JWT_SECRET);
 
 
 const connectDB = require("./src/config/db");
